@@ -8,42 +8,63 @@ const posts = [
 
 <Layout title="inicio">
 
-  <section style="position:relative;height:calc(100vh - 56px);overflow:visible;">
+  <!-- ═══════════════════════════════════
+       MÓVIL: layout vertical simple
+  ═══════════════════════════════════ -->
+  <section class="hero-mobile">
+    <div class="mob-avatar">
+      <img src="/avatar.png" alt="Victorino" />
+    </div>
+    <div class="mob-content">
+      <h1>
+        <span class="t1">EL JARDÍN</span>
+        <span class="t2">digital de</span>
+        <span class="t3">VICTORINISIMO</span>
+      </h1>
+      <p class="sub">Escritura · Vida · Cerebro neurodivergente</p>
+      <div class="cta">
+        <a href="/newsletter" class="btn-red">Suscribirme gratis</a>
+        <a href="/jardin" class="btn-ghost">Leer el jardín</a>
+      </div>
+    </div>
+  </section>
 
+  <!-- ═══════════════════════════════════
+       ESCRITORIO: layout Avatar.Studio
+  ═══════════════════════════════════ -->
+  <section class="hero-desk">
     <img
       id="avatar"
       src="/avatar.png"
       alt="Victorino"
-      style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:calc(100% + 56px);width:auto;object-fit:contain;object-position:bottom center;z-index:1;pointer-events:none;"
+      class="avatar"
     />
-
-    <div style="position:absolute;left:0;bottom:28%;z-index:10;max-width:42%;">
-      <h1 style="font-family:'Playfair Display',Georgia,serif;font-weight:900;line-height:0.95;letter-spacing:-0.02em;color:#1A1714;display:flex;flex-direction:column;gap:0;">
-        <span style="font-size:clamp(1.75rem,2.8vw,2.75rem);white-space:nowrap;display:block;">EL JARDÍN</span>
-        <span style="font-size:clamp(1.25rem,2vw,2rem);font-style:italic;font-weight:400;color:#6B6560;white-space:nowrap;display:block;">digital de</span>
-        <span style="font-size:clamp(1.5rem,3vw,2.9rem);white-space:nowrap;letter-spacing:-0.03em;display:block;">VICTORINISIMO</span>
+    <div class="title-block">
+      <h1>
+        <span class="t1">EL JARDÍN</span>
+        <span class="t2">digital de</span>
+        <span class="t3">VICTORINISIMO</span>
       </h1>
-      <p style="font-size:0.8125rem;color:#6B6560;margin-top:0.875rem;">Escritura · Vida · Cerebro neurodivergente</p>
-      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1.25rem;">
-        <a href="/newsletter" style="display:inline-block;padding:0.65rem 1.35rem;background:#C8432A;color:white;font-size:0.8125rem;font-weight:500;border-radius:2px;font-family:'DM Sans',sans-serif;">Suscribirme gratis</a>
-        <a href="/jardin" style="display:inline-block;padding:0.65rem 1.35rem;border:1px solid rgba(26,23,20,0.25);color:#1A1714;font-size:0.8125rem;font-weight:400;border-radius:2px;font-family:'DM Sans',sans-serif;">Leer el jardín</a>
+      <p class="sub">Escritura · Vida · Cerebro neurodivergente</p>
+      <div class="cta">
+        <a href="/newsletter" class="btn-red">Suscribirme gratis</a>
+        <a href="/jardin" class="btn-ghost">Leer el jardín</a>
       </div>
     </div>
-
-    <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:10;width:220px;display:flex;flex-direction:column;gap:0.5rem;">
-      <p style="font-size:0.5625rem;letter-spacing:0.06em;color:#B8B3AC;margin-bottom:0.25rem;">Últimas entradas</p>
+    <div class="posts-col">
+      <p class="posts-label">Últimas entradas</p>
       {posts.map(post => (
-        <a href={`/blog/${post.slug}`} style="display:flex;flex-direction:column;gap:3px;padding:0.75rem;border:1px solid rgba(26,23,20,0.08);border-radius:2px;background:rgba(245,242,236,0.9);">
-          <span style="font-size:0.5625rem;letter-spacing:0.06em;color:#C8432A;font-weight:500;">{post.category}</span>
-          <span style="font-size:0.75rem;color:#1A1714;line-height:1.4;">{post.title}</span>
-          <span style="font-size:0.5625rem;color:#B8B3AC;">{post.date}</span>
+        <a href={`/blog/${post.slug}`} class="post-card">
+          <span class="post-cat">{post.category}</span>
+          <span class="post-title">{post.title}</span>
+          <span class="post-date">{post.date}</span>
         </a>
       ))}
-      <a href="/jardin" style="font-size:0.75rem;color:#6B6560;padding:0.4rem 0;text-align:right;display:block;">Ver todas →</a>
+      <a href="/jardin" class="ver-todos">Ver todas →</a>
     </div>
-
   </section>
 
+  <!-- Categorías -->
   <section class="cats">
     <div class="cats-grid">
       {[
@@ -63,10 +84,11 @@ const posts = [
     </div>
   </section>
 
+  <!-- Sobre mí -->
   <section class="about">
     <div class="about-inner">
       <div class="about-text">
-        <p style="font-size:0.5625rem;letter-spacing:0.06em;color:#B8B3AC;margin-bottom:0.75rem;display:block;">Sobre mí</p>
+        <p class="about-tag">Sobre mí</p>
         <h2>Soy Victorino, AuDHD y creador de contenido</h2>
         <p>Escribo sobre lo que me obsesiona: fermentados, skincare coreano, microbiota, productividad con IA y lo que significa vivir con un cerebro neurodivergente. Sin filtros, sin perfección.</p>
         <a href="/sobre-mi" class="btn-ghost" style="margin-top:1rem;display:inline-block;">Conocerme mejor →</a>
@@ -79,32 +101,31 @@ const posts = [
     </div>
   </section>
 
-  <section style="padding:3rem 0;border-top:1px solid rgba(26,23,20,0.08);text-align:center;">
-    <p style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.12em;color:#B8B3AC;margin-bottom:0.75rem;">Newsletter</p>
-    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;font-style:italic;color:#1A1714;margin-bottom:0.75rem;">El jardín llega a tu bandeja de entrada</h2>
-    <p style="font-size:0.9375rem;color:#6B6560;max-width:480px;margin:0 auto 2rem;line-height:1.7;">Sin algoritmos, sin ruido. Solo lo que escribo cuando algo me obsesiona de verdad.</p>
-    <form action="/api/subscribe" method="POST" style="display:flex;gap:0;max-width:420px;margin:0 auto;border:1px solid rgba(26,23,20,0.15);border-radius:2px;overflow:hidden;background:white;">
-      <input type="email" name="email" placeholder="tu@email.com" required style="flex:1;padding:0.75rem 1rem;font-size:0.875rem;border:none;outline:none;background:transparent;color:#1A1714;" />
-      <button type="submit" style="padding:0.75rem 1.25rem;background:#1A1714;color:#F5F2EC;font-size:0.8125rem;font-weight:500;border:none;cursor:pointer;white-space:nowrap;">Suscribirme gratis</button>
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <p class="newsletter-tag">Newsletter</p>
+    <h2>El jardín llega a tu bandeja de entrada</h2>
+    <p class="newsletter-sub">Sin algoritmos, sin ruido. Solo lo que escribo cuando algo me obsesiona de verdad.</p>
+    <form action="/api/subscribe" method="POST" class="newsletter-form">
+      <input type="email" name="email" placeholder="tu@email.com" required />
+      <button type="submit">Suscribirme gratis</button>
     </form>
-    <p style="font-size:0.6875rem;color:#B8B3AC;margin-top:0.75rem;">Sin spam. Baja cuando quieras.</p>
+    <p class="newsletter-note">Sin spam. Baja cuando quieras.</p>
   </section>
+
+</Layout>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const avatar = document.getElementById('avatar');
     if (!avatar) return;
-
     document.addEventListener('mousemove', (e) => {
       const rect = avatar.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const rotateY = ((e.clientX - centerX) / window.innerWidth) * 15;
-      const rotateX = -((e.clientY - centerY) / window.innerHeight) * 10;
+      const rotateY = ((e.clientX - (rect.left + rect.width / 2)) / window.innerWidth) * 15;
+      const rotateX = -((e.clientY - (rect.top + rect.height / 2)) / window.innerHeight) * 10;
       avatar.style.transform = `translateX(-50%) perspective(800px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
       avatar.style.transition = 'transform 0.1s ease-out';
     });
-
     document.addEventListener('mouseleave', () => {
       avatar.style.transform = 'translateX(-50%)';
       avatar.style.transition = 'transform 0.5s ease-out';
@@ -112,9 +133,108 @@ const posts = [
   });
 </script>
 
-</Layout>
-
 <style>
+  /* ══ TIPOGRAFÍA COMPARTIDA ══ */
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: #1A1714;
+    display: flex;
+    flex-direction: column;
+  }
+  .t1 { font-size: clamp(1.75rem, 4vw, 2.75rem); white-space: nowrap; display: block; }
+  .t2 { font-size: clamp(1.25rem, 3vw, 2rem); font-style: italic; font-weight: 400; color: #6B6560; white-space: nowrap; display: block; }
+  .t3 { font-size: clamp(1.5rem, 4.5vw, 2.9rem); white-space: nowrap; letter-spacing: -0.03em; display: block; }
+  .sub { font-size: 0.875rem; color: #6B6560; margin-top: 0.875rem; }
+  .cta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+  .btn-red { display: inline-block; padding: 0.65rem 1.35rem; background: #C8432A; color: white !important; font-size: 0.8125rem; font-weight: 500; border-radius: 2px; }
+  .btn-ghost { display: inline-block; padding: 0.65rem 1.35rem; border: 1px solid rgba(26,23,20,0.2); color: #1A1714 !important; font-size: 0.8125rem; border-radius: 2px; }
+
+  /* ══ HERO MÓVIL ══ */
+  .hero-desk { display: none; }
+
+  .hero-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+  }
+
+  .mob-avatar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    max-height: 420px;
+  }
+
+  .mob-avatar img {
+    height: 420px;
+    width: auto;
+    object-fit: contain;
+    object-position: top center;
+  }
+
+  .mob-content {
+    width: 100%;
+    padding-top: 1rem;
+  }
+
+  /* ══ HERO ESCRITORIO ══ */
+  @media (min-width: 768px) {
+    .hero-mobile { display: none; }
+    .hero-desk {
+      display: block;
+      position: relative;
+      height: calc(100vh - 56px);
+      overflow: visible;
+    }
+
+    .avatar {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: calc(100% + 56px);
+      width: auto;
+      object-fit: contain;
+      object-position: bottom center;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .title-block {
+      position: absolute;
+      left: 0;
+      bottom: 28%;
+      z-index: 2;
+      max-width: 40%;
+    }
+
+    .posts-col {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  /* Posts */
+  .posts-label { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.12em; color: #B8B3AC; margin-bottom: 0.25rem; }
+  .post-card { display: flex; flex-direction: column; gap: 3px; padding: 0.75rem; border: 1px solid rgba(26,23,20,0.08); border-radius: 2px; background: rgba(245,242,236,0.9); }
+  .post-cat { font-size: 0.5625rem; letter-spacing: 0.06em; color: #C8432A; font-weight: 500; }
+  .post-title { font-size: 0.75rem; color: #1A1714; line-height: 1.4; }
+  .post-date { font-size: 0.5625rem; color: #B8B3AC; }
+  .ver-todos { font-size: 0.75rem; color: #6B6560; padding: 0.4rem 0; text-align: right; display: block; }
+
+  /* ══ CATEGORÍAS ══ */
   .cats { padding: 2.5rem 0 0; border-top: 1px solid rgba(26,23,20,0.08); }
   .cats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; border: 1px solid rgba(26,23,20,0.1); border-radius: 4px; overflow: hidden; background: rgba(26,23,20,0.08); }
   @media (min-width: 600px) { .cats-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -125,16 +245,27 @@ const posts = [
   .cat-name { font-size: 0.75rem; font-weight: 500; color: #1A1714; }
   .cat-desc { font-size: 0.6875rem; color: #6B6560; line-height: 1.4; }
 
+  /* ══ SOBRE MÍ ══ */
   .about { padding: 3rem 0; border-top: 1px solid rgba(26,23,20,0.08); }
   .about-inner { display: grid; grid-template-columns: 1fr; gap: 2rem; }
   @media (min-width: 700px) { .about-inner { grid-template-columns: 1fr auto; align-items: center; } }
+  .about-tag { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.12em; color: #B8B3AC; margin-bottom: 0.75rem; }
   .about-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; font-style: italic; line-height: 1.2; margin-bottom: 0.75rem; color: #1A1714; }
   .about-text p { font-size: 0.9375rem; color: #6B6560; line-height: 1.7; max-width: 540px; }
-  .btn-ghost { display: inline-block; padding: 0.65rem 1.35rem; border: 1px solid rgba(26,23,20,0.2); color: #1A1714; font-size: 0.8125rem; border-radius: 2px; }
   .about-stats { display: flex; gap: 2rem; }
   @media (min-width: 700px) { .about-stats { flex-direction: column; gap: 1.5rem; align-items: flex-end; } }
   .stat { display: flex; flex-direction: column; gap: 2px; }
   @media (min-width: 700px) { .stat { align-items: flex-end; } }
   .stat-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: #1A1714; line-height: 1; }
   .stat-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B8B3AC; }
+
+  /* ══ NEWSLETTER ══ */
+  .newsletter { padding: 3rem 0; border-top: 1px solid rgba(26,23,20,0.08); text-align: center; }
+  .newsletter-tag { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.12em; color: #B8B3AC; margin-bottom: 0.75rem; }
+  .newsletter h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; font-style: italic; color: #1A1714; margin-bottom: 0.75rem; }
+  .newsletter-sub { font-size: 0.9375rem; color: #6B6560; max-width: 480px; margin: 0 auto 2rem; line-height: 1.7; }
+  .newsletter-form { display: flex; max-width: 420px; margin: 0 auto; border: 1px solid rgba(26,23,20,0.15); border-radius: 2px; overflow: hidden; background: white; }
+  .newsletter-form input { flex: 1; padding: 0.75rem 1rem; font-size: 0.875rem; border: none; outline: none; background: transparent; color: #1A1714; min-width: 0; }
+  .newsletter-form button { padding: 0.75rem 1.25rem; background: #1A1714; color: #F5F2EC; font-size: 0.8125rem; font-weight: 500; border: none; cursor: pointer; white-space: nowrap; }
+  .newsletter-note { font-size: 0.6875rem; color: #B8B3AC; margin-top: 0.75rem; }
 </style>
