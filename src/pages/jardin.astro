@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const posts = [
+  { slug: "por-que-escribir", title: "Por qué escribir me ayuda a procesar el mundo", category: "El jardín", date: "28 mar 2026", desc: "La escritura como prótesis, como resistencia, como la única forma de convertir el glitch permanente que soy en algo con lo que se pueda vivir." },
+];
+---
+
+<Layout title="El jardín">
+
+  <section style="padding:3rem 0 2rem;">
+    <p style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.12em;color:#B8B3AC;margin-bottom:1rem;display:block;">El jardín</p>
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1;letter-spacing:-0.02em;color:#1A1714;margin-bottom:0.75rem;">Escritura, vlogs<br/><em style="font-style:italic;font-weight:400;">e historias.</em></h1>
+    <p style="font-size:1rem;color:#6B6560;line-height:1.7;max-width:540px;">Todo lo que escribo cuando algo me obsesiona. Sin filtros, sin perfección, con todo el caos organizado de un cerebro neurodivergente.</p>
+  </section>
+
+  <section style="padding:2rem 0 4rem;border-top:1px solid rgba(26,23,20,0.08);">
+    <div style="display:grid;grid-template-columns:1fr;gap:1px;border:1px solid rgba(26,23,20,0.08);border-radius:4px;overflow:hidden;background:rgba(26,23,20,0.06);">
+      {posts.map(post => (
+        <a href={`/blog/${post.slug}`} style="display:grid;grid-template-columns:auto 1fr auto;gap:2rem;align-items:center;padding:1.5rem;background:#F5F2EC;transition:background 0.15s;">
+          <span style="font-size:0.6875rem;color:#B8B3AC;white-space:nowrap;">{post.date}</span>
+          <div>
+            <span style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.1em;color:#C8432A;font-weight:500;display:block;margin-bottom:0.35rem;">{post.category}</span>
+            <span style="font-size:1rem;font-weight:500;color:#1A1714;display:block;margin-bottom:0.35rem;font-family:'Playfair Display',serif;">{post.title}</span>
+            <span style="font-size:0.8125rem;color:#6B6560;line-height:1.5;">{post.desc}</span>
+          </div>
+          <span style="color:#B8B3AC;font-size:1rem;">→</span>
+        </a>
+      ))}
+    </div>
+
+    <div style="text-align:center;padding:4rem 0 2rem;">
+      <p style="font-family:'Playfair Display',serif;font-size:1.25rem;font-style:italic;color:#B8B3AC;">Más entradas próximamente.</p>
+    </div>
+  </section>
+
+</Layout>

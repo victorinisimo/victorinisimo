@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const libros = [
+  {
+    titulo: "En proceso",
+    subtitulo: "Mi primer libro",
+    desc: "Estoy escribiendo mi primer libro. Aquí iré compartiendo el proceso, los avances y lo que voy aprendiendo sobre escribir siendo AuDHD.",
+    estado: "En proceso",
+    href: "#"
+  },
+];
+---
+
+<Layout title="La estantería">
+
+  <section style="padding:3rem 0 2rem;">
+    <p style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.12em;color:#B8B3AC;margin-bottom:1rem;display:block;">La estantería</p>
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1;letter-spacing:-0.02em;color:#1A1714;margin-bottom:0.75rem;">Libros y<br/><em style="font-style:italic;font-weight:400;">proyectos largos.</em></h1>
+    <p style="font-size:1rem;color:#6B6560;line-height:1.7;max-width:540px;">Lo que escribo cuando 280 caracteres o un post no son suficientes. Proyectos de largo aliento, con calma y sin prisa.</p>
+  </section>
+
+  <section style="padding:2rem 0 4rem;border-top:1px solid rgba(26,23,20,0.08);">
+    {libros.map(libro => (
+      <div style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;padding:2rem;border:1px solid rgba(26,23,20,0.08);border-radius:4px;background:white;margin-bottom:1rem;">
+        <div>
+          <span style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.1em;color:#C8432A;font-weight:500;display:block;margin-bottom:0.5rem;">{libro.estado}</span>
+          <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#1A1714;margin-bottom:0.25rem;">{libro.titulo}</h2>
+          <p style="font-size:0.875rem;color:#B8B3AC;margin-bottom:1rem;font-style:italic;">{libro.subtitulo}</p>
+          <p style="font-size:0.9375rem;color:#6B6560;line-height:1.7;max-width:480px;">{libro.desc}</p>
+        </div>
+        <div style="width:100px;height:140px;background:rgba(26,23,20,0.04);border:1px solid rgba(26,23,20,0.08);border-radius:2px;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:2rem;">📖</span>
+        </div>
+      </div>
+    ))}
+
+    <div style="text-align:center;padding:3rem 0 2rem;">
+      <p style="font-family:'Playfair Display',serif;font-size:1.25rem;font-style:italic;color:#B8B3AC;margin-bottom:0.75rem;">Más proyectos en camino.</p>
+      <p style="font-size:0.875rem;color:#B8B3AC;margin-bottom:1.5rem;">Suscríbete para seguir el proceso desde dentro.</p>
+      <a href="/newsletter" style="display:inline-block;padding:0.65rem 1.35rem;background:#C8432A;color:white;font-size:0.8125rem;font-weight:500;border-radius:2px;">Suscribirme gratis</a>
+    </div>
+  </section>
+
+</Layout>

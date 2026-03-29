@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Newsletter">
+
+  <section style="max-width:600px;padding:4rem 0 6rem;">
+
+    <p style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.12em;color:#B8B3AC;margin-bottom:1.5rem;display:block;">Newsletter</p>
+
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1;letter-spacing:-0.02em;color:#1A1714;margin-bottom:1.25rem;">
+      El jardín llega a tu<br/>
+      <em style="font-style:italic;font-weight:400;">bandeja de entrada.</em>
+    </h1>
+
+    <p style="font-size:1rem;color:#6B6560;line-height:1.8;margin-bottom:2.5rem;">Sin algoritmos, sin ruido, sin publicaciones que desaparecen en 24 horas. Solo lo que escribo cuando algo me obsesiona de verdad — y eso no pasa cada día, así que cuando llega, vale la pena.</p>
+
+    <!-- Qué van a recibir -->
+    <div style="display:grid;grid-template-columns:1fr;gap:1px;border:1px solid rgba(26,23,20,0.08);border-radius:4px;overflow:hidden;background:rgba(26,23,20,0.06);margin-bottom:2.5rem;">
+      {[
+        { icon: "✍️", title: "Escritura real", desc: "Artículos largos cuando tengo algo que decir. Sin calendario editorial, sin presión." },
+        { icon: "🧠", title: "Vida AuDHD sin filtros", desc: "Lo que nadie te cuenta sobre vivir siendo autista y con TDAH al mismo tiempo." },
+        { icon: "🫙", title: "Obsesiones del momento", desc: "Fermentados, skincare coreano, microbiota, IA — lo que esté consumiendo mi hiperfoco." },
+        { icon: "🔒", title: "Contenido exclusivo", desc: "Reflexiones y textos que no publico en ningún otro sitio." },
+      ].map(item => (
+        <div style="display:flex;gap:1rem;align-items:flex-start;padding:1.25rem;background:#F5F2EC;">
+          <span style="font-size:1.25rem;flex-shrink:0;">{item.icon}</span>
+          <div>
+            <p style="font-size:0.875rem;font-weight:500;color:#1A1714;margin-bottom:0.25rem;">{item.title}</p>
+            <p style="font-size:0.8125rem;color:#6B6560;line-height:1.5;">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Formulario -->
+    <div style="border:1px solid rgba(26,23,20,0.1);border-radius:4px;padding:2rem;background:white;">
+      <p style="font-size:1rem;font-weight:500;color:#1A1714;margin-bottom:0.5rem;">Suscribirme gratis</p>
+      <p style="font-size:0.8125rem;color:#6B6560;margin-bottom:1.25rem;">Sin spam. Sin compromisos. Baja cuando quieras con un clic.</p>
+      <form action="/api/subscribe" method="POST" style="display:flex;flex-direction:column;gap:0.75rem;">
+        <input
+          type="email"
+          name="email"
+          placeholder="tu@email.com"
+          required
+          style="width:100%;padding:0.75rem 1rem;font-size:0.875rem;border:1px solid rgba(26,23,20,0.15);border-radius:2px;outline:none;color:#1A1714;background:white;"
+        />
+        <button
+          type="submit"
+          style="width:100%;padding:0.75rem;background:#C8432A;color:white;font-size:0.875rem;font-weight:500;border:none;border-radius:2px;cursor:pointer;"
+        >
+          Quiero recibir el jardín
+        </button>
+      </form>
+    </div>
+
+    <!-- Social proof -->
+    <p style="font-size:0.75rem;color:#B8B3AC;margin-top:1.25rem;text-align:center;font-style:italic;">
+      "Nosotros no buscamos la luz al final del túnel; hemos decidido que nosotros somos la puñetera luz."
+    </p>
+
+  </section>
+
+</Layout>

@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const temas = [
+  { icon: "🧠", name: "AuDHD", desc: "Vivir siendo autista y con TDAH al mismo tiempo. Lo que nadie te explica." },
+  { icon: "📋", name: "Organización", desc: "Sistemas que funcionan para un cerebro que no sigue las reglas." },
+  { icon: "💊", name: "Salud mental", desc: "Sin tabúes. El camino de entenderse a uno mismo." },
+  { icon: "🤖", name: "IA como herramienta", desc: "Cómo uso la inteligencia artificial para compensar mis dificultades." },
+  { icon: "😴", name: "Sueño y ritmos", desc: "El gran reto de los cerebros neurodivergentes." },
+  { icon: "🌱", name: "Hábitos", desc: "Construir rutinas que no se rompan a la primera." },
+];
+---
+
+<Layout title="El cerebro">
+
+  <section style="padding:3rem 0 2rem;">
+    <p style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.12em;color:#B8B3AC;margin-bottom:1rem;display:block;">El cerebro</p>
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1;letter-spacing:-0.02em;color:#1A1714;margin-bottom:0.75rem;">Vivir siendo<br/><em style="font-style:italic;font-weight:400;">AuDHD.</em></h1>
+    <p style="font-size:1rem;color:#6B6560;line-height:1.7;max-width:540px;">Lo que significa tener un cerebro autista y con TDAH en un mundo que no está diseñado para ti. Sin diagnósticos tardíos ignorados, sin filtros.</p>
+  </section>
+
+  <section style="padding:2rem 0;border-top:1px solid rgba(26,23,20,0.08);">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;border:1px solid rgba(26,23,20,0.1);border-radius:4px;overflow:hidden;background:rgba(26,23,20,0.08);">
+      {temas.map(tema => (
+        <div style="display:flex;flex-direction:column;gap:0.5rem;padding:1.5rem;background:#F5F2EC;">
+          <span style="font-size:1.5rem;">{tema.icon}</span>
+          <span style="font-size:0.875rem;font-weight:500;color:#1A1714;">{tema.name}</span>
+          <span style="font-size:0.75rem;color:#6B6560;line-height:1.5;">{tema.desc}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section style="padding:3rem 0 4rem;border-top:1px solid rgba(26,23,20,0.08);margin-top:2rem;">
+    <div style="text-align:center;">
+      <p style="font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;color:#B8B3AC;margin-bottom:0.75rem;">Los artículos están en camino.</p>
+      <p style="font-size:0.875rem;color:#B8B3AC;margin-bottom:1.5rem;">Suscríbete para leerlos en cuanto los publique.</p>
+      <a href="/newsletter" style="display:inline-block;padding:0.65rem 1.35rem;background:#C8432A;color:white;font-size:0.8125rem;font-weight:500;border-radius:2px;">Suscribirme gratis</a>
+    </div>
+  </section>
+
+</Layout>

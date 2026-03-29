@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  console.log('IDs encontrados:', posts.map(p => p.id));
+  return posts.map(post => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+
+  <article style="max-width:680px;padding:3rem 0 6rem;">
+
+    <header style="margin-bottom:3rem;">
+      <a href="/jardin" style="font-size:0.75rem;color:#B8B3AC;display:inline-block;margin-bottom:1.5rem;">← Volver al jardín</a>
+      <p style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.12em;color:#C8432A;font-weight:500;margin-bottom:0.75rem;">{post.data.category}</p>
+      <h1 style="font-family:'Playfair Display',serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;color:#1A1714;margin-bottom:1rem;">{post.data.title}</h1>
+      <p style="font-size:0.875rem;color:#6B6560;font-style:italic;">{post.data.description}</p>
+      <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(26,23,20,0.08);">
+        <span style="font-size:0.75rem;color:#B8B3AC;">
+          {post.data.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </span>
+      </div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer style="margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(26,23,20,0.08);">
+      <p style="font-size:0.875rem;color:#6B6560;margin-bottom:1.5rem;">¿Te ha resonado esto? Suscríbete para leer el próximo.</p>
+      <a href="/newsletter" style="display:inline-block;padding:0.65rem 1.35rem;background:#C8432A;color:white;font-size:0.8125rem;font-weight:500;border-radius:2px;">Suscribirme gratis</a>
+    </footer>
+
+  </article>
+
+</Layout>
+
+<style>
+  .prose { font-size: 1.0625rem; line-height: 1.8; color: #3D3935; text-align: justify; hyphens: auto; }
+  .prose p { margin-bottom: 1.5rem; }
+  .prose h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #1A1714; margin-top: 2.5rem; margin-bottom: 1rem; line-height: 1.2; }
+  .prose h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: #1A1714; margin-top: 2rem; margin-bottom: 0.75rem; }
+  .prose strong { font-weight: 600; color: #1A1714; }
+  .prose em { font-style: italic; }
+  .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+  .prose li { margin-bottom: 0.5rem; }
+  .prose blockquote { border-left: 3px solid #C8432A; padding-left: 1.25rem; margin: 2rem 0; font-style: italic; color: #6B6560; }
+</style>

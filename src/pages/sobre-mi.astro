@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Sobre mí">
+
+  <section style="max-width:680px;padding:4rem 0 6rem;">
+
+    <p style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.12em;color:#B8B3AC;margin-bottom:1.5rem;display:block;">Sobre mí</p>
+
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1;letter-spacing:-0.02em;color:#1A1714;margin-bottom:2rem;">
+      Hola, soy<br/>
+      <em style="font-style:italic;font-weight:400;">Victorino.</em>
+    </h1>
+
+    <div style="font-size:1rem;color:#6B6560;line-height:1.8;display:flex;flex-direction:column;gap:1.25rem;">
+      <p>Soy AuDHD — autista y con TDAH — y llevo toda la vida intentando entender cómo funciona mi cerebro. Este espacio nació de esa necesidad: un lugar donde procesar el mundo a través de la escritura.</p>
+
+      <p>Aquí escribo sobre lo que me obsesiona en cada momento: fermentados, skincare coreano, microbiota, productividad con IA, hábitos, y lo que significa vivir siendo neurodivergente en un mundo que no está diseñado para ti.</p>
+
+      <p>Sin filtros. Sin perfección. Con todo el caos organizado que eso implica.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;border:1px solid rgba(26,23,20,0.1);border-radius:4px;overflow:hidden;background:rgba(26,23,20,0.08);margin-top:3rem;">
+      {[
+        { label: "Diagnóstico", value: "AuDHD" },
+        { label: "Temáticas", value: "6" },
+        { label: "Contenido", value: "100% real" },
+        { label: "Filtros", value: "Ninguno" },
+      ].map(item => (
+        <div style="background:#F5F2EC;padding:1.25rem 1rem;display:flex;flex-direction:column;gap:4px;">
+          <span style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.1em;color:#B8B3AC;">{item.label}</span>
+          <span style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:900;color:#1A1714;">{item.value}</span>
+        </div>
+      ))}
+    </div>
+
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(26,23,20,0.08);">
+      <p style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.12em;color:#B8B3AC;margin-bottom:1rem;">¿Hablamos?</p>
+      <a href="mailto:hola@victorinisimo.com" style="display:inline-block;padding:0.65rem 1.35rem;background:#1A1714;color:white;font-size:0.8125rem;font-weight:500;border-radius:2px;">hola@victorinisimo.com</a>
+    </div>
+
+  </section>
+
+</Layout>
