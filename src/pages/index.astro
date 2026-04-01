@@ -4,76 +4,84 @@ import Layout from '../layouts/Layout.astro';
 const posts = [
   { slug: "por-que-escribir", title: "Por qué escribir me ayuda a procesar el mundo", category: "El jardín", date: "28 mar 2026" },
 ];
+
+const slides = [
+  "/imagenes_avatar_principal/avatar_camisa_azul_basico.png",
+  "/imagenes_avatar_principal/avatar_escritor.png",
+  "/imagenes_avatar_principal/avatar_viajero.png",
+  "/imagenes_avatar_principal/avatar_skincare.png",
+  "/imagenes_avatar_principal/avatar_fermentados.png",
+  "/imagenes_avatar_principal/avatar_pesas.png",
+  "/imagenes_avatar_principal/avatar_nintendo.png",
+  "/imagenes_avatar_principal/avatar_impresora3d.png",
+  "/imagenes_avatar_principal/avatar_youtube.png",
+  "/imagenes_avatar_principal/avatar_olivia.png",
+  "/imagenes_avatar_principal/avatar_guino.png",
+  "/imagenes_avatar_principal/avatar_sudadera_negra.png",
+  "/imagenes_avatar_principal/avatar_crisis.png",
+  "/imagenes_avatar_principal/avatar_crisis_suelo.png",
+];
 ---
 
 <Layout title="inicio">
 
-  <!-- ═══════════════════════════════════
-       MÓVIL: layout vertical simple
-  ═══════════════════════════════════ -->
-  <section class="hero-mobile">
-    <div class="mob-avatar">
-      <img src="/avatar.png" alt="Victorino" />
-    </div>
-    <div class="mob-content">
-      <h1>
-        <span class="t1">EL JARDÍN</span>
-        <span class="t2">digital de</span>
-        <span class="t3">VICTORINISIMO</span>
-      </h1>
-      <p class="sub">Escritura · Vida · Cerebro neurodivergente</p>
-      <div class="cta">
-        <a href="/newsletter" class="btn-red">Suscribirme gratis</a>
-        <a href="/jardin" class="btn-ghost">Leer el jardín</a>
+  <section class="hero-break">
+    <div class="hero-inner">
+
+      <!-- MÓVIL: collage arriba, texto abajo -->
+      <!-- ESCRITORIO: texto izquierda | collage centro | posts derecha -->
+
+      <div class="title-col">
+        <h1>
+          <span class="t1">EL JARDÍN</span>
+          <span class="t2">digital de</span>
+          <span class="t3">VICTORINISIMO</span>
+        </h1>
+        <p class="sub">Escritura · Vida · Cerebro neurodivergente</p>
+        <div class="cta">
+          <a href="/newsletter" class="btn-red">Suscribirme gratis</a>
+          <a href="/jardin" class="btn-ghost">Leer el jardín</a>
+        </div>
       </div>
+
+      <div class="collage" id="collage">
+        {slides.map((src, i) => (
+          <div class={`slide ${i === 0 ? 'active' : ''}`}>
+            <img src={src} alt="Victorino" class="slide-img" loading={i === 0 ? 'eager' : 'lazy'} />
+          </div>
+        ))}
+        <div class="dots">
+          {slides.map((_, i) => (
+            <button class={`dot ${i === 0 ? 'active' : ''}`} data-dot={i} aria-label={`Slide ${i+1}`}></button>
+          ))}
+        </div>
+      </div>
+
+      <div class="posts-col">
+        <p class="posts-label">Últimas entradas</p>
+        {posts.map(post => (
+          <a href={`/blog/${post.slug}`} class="post-card">
+            <span class="post-cat">{post.category}</span>
+            <span class="post-title">{post.title}</span>
+            <span class="post-date">{post.date}</span>
+          </a>
+        ))}
+        <a href="/jardin" class="ver-todos">Ver todas →</a>
+      </div>
+
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════
-       ESCRITORIO: layout Avatar.Studio
-  ═══════════════════════════════════ -->
-  <section class="hero-desk">
-    <img
-      id="avatar"
-      src="/avatar.png"
-      alt="Victorino"
-      class="avatar"
-    />
-    <div class="title-block">
-      <h1>
-        <span class="t1">EL JARDÍN</span>
-        <span class="t2">digital de</span>
-        <span class="t3">VICTORINISIMO</span>
-      </h1>
-      <p class="sub">Escritura · Vida · Cerebro neurodivergente</p>
-      <div class="cta">
-        <a href="/newsletter" class="btn-red">Suscribirme gratis</a>
-        <a href="/jardin" class="btn-ghost">Leer el jardín</a>
-      </div>
-    </div>
-    <div class="posts-col">
-      <p class="posts-label">Últimas entradas</p>
-      {posts.map(post => (
-        <a href={`/blog/${post.slug}`} class="post-card">
-          <span class="post-cat">{post.category}</span>
-          <span class="post-title">{post.title}</span>
-          <span class="post-date">{post.date}</span>
-        </a>
-      ))}
-      <a href="/jardin" class="ver-todos">Ver todas →</a>
-    </div>
-  </section>
-
-  <!-- Categorías -->
+  <!-- CATEGORÍAS -->
   <section class="cats">
     <div class="cats-grid">
       {[
-        { icon: "✍️", name: "El jardín", desc: "Escritura, vlogs e historias", href: "/jardin" },
-        { icon: "🧠", name: "El cerebro", desc: "Vivir siendo AuDHD", href: "/cerebro" },
-        { icon: "🫙", name: "La despensa", desc: "Kéfir, kimchi, kombucha", href: "/jardin?cat=fermentados" },
-        { icon: "🤖", name: "El laboratorio", desc: "IA y productividad AuDHD", href: "/jardin?cat=ia" },
-        { icon: "🌿", name: "La microbiota", desc: "Salud intestinal", href: "/jardin?cat=microbiota" },
-        { icon: "🌸", name: "El ritual", desc: "Skincare coreano", href: "/jardin?cat=skincare" },
+        { icon: "✍️", name: "El jardín",      desc: "Escritura, vlogs e historias",  href: "/jardin" },
+        { icon: "🧠", name: "El cerebro",     desc: "Vivir siendo AuDHD",             href: "/cerebro" },
+        { icon: "🫙", name: "La despensa",    desc: "Kéfir, kimchi, kombucha",        href: "/jardin?cat=fermentados" },
+        { icon: "🤖", name: "El laboratorio", desc: "IA y productividad AuDHD",       href: "/jardin?cat=ia" },
+        { icon: "🌿", name: "La microbiota",  desc: "Salud intestinal",               href: "/jardin?cat=microbiota" },
+        { icon: "🌸", name: "El ritual",      desc: "Skincare coreano",               href: "/jardin?cat=skincare" },
       ].map(cat => (
         <a href={cat.href} class="cat-card">
           <span class="cat-icon">{cat.icon}</span>
@@ -84,7 +92,7 @@ const posts = [
     </div>
   </section>
 
-  <!-- Sobre mí -->
+  <!-- SOBRE MÍ -->
   <section class="about">
     <div class="about-inner">
       <div class="about-text">
@@ -101,7 +109,7 @@ const posts = [
     </div>
   </section>
 
-  <!-- Newsletter -->
+  <!-- NEWSLETTER -->
   <section class="newsletter">
     <p class="newsletter-tag">Newsletter</p>
     <h2>El jardín llega a tu bandeja de entrada</h2>
@@ -116,25 +124,145 @@ const posts = [
 </Layout>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const avatar = document.getElementById('avatar');
-    if (!avatar) return;
-    document.addEventListener('mousemove', (e) => {
-      const rect = avatar.getBoundingClientRect();
-      const rotateY = ((e.clientX - (rect.left + rect.width / 2)) / window.innerWidth) * 15;
-      const rotateX = -((e.clientY - (rect.top + rect.height / 2)) / window.innerHeight) * 10;
-      avatar.style.transform = `translateX(-50%) perspective(800px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-      avatar.style.transition = 'transform 0.1s ease-out';
-    });
-    document.addEventListener('mouseleave', () => {
-      avatar.style.transform = 'translateX(-50%)';
-      avatar.style.transition = 'transform 0.5s ease-out';
-    });
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  function goTo(n: number) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { goTo(i); startTimer(); });
   });
+
+  let touchX = 0;
+  const collage = document.getElementById('collage')!;
+  collage.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  collage.addEventListener('touchend', e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { goTo(current + (diff > 0 ? 1 : -1)); startTimer(); }
+  }, { passive: true });
+
+  startTimer();
 </script>
 
 <style>
-  /* ══ TIPOGRAFÍA COMPARTIDA ══ */
+  /* ══ HERO ══ */
+  .hero-break {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Escritorio: 3 columnas */
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 240px 1fr 200px;
+    align-items: center;
+    height: calc(100vh - 56px);
+    min-height: 500px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    gap: 1.5rem;
+  }
+
+  /* Tablet: texto + collage, sin posts */
+  @media (max-width: 1024px) and (min-width: 600px) {
+    .hero-inner {
+      grid-template-columns: 1fr 1fr;
+      height: auto;
+      min-height: 0;
+      padding: 2rem 1.5rem;
+    }
+    .posts-col { display: none; }
+  }
+
+  /* Móvil: columna única */
+  @media (max-width: 599px) {
+    .hero-break { width: 100%; margin-left: 0; }
+    .hero-inner {
+      grid-template-columns: 1fr;
+      height: auto;
+      min-height: 0;
+      padding: 1.5rem 1rem 2rem;
+      gap: 1rem;
+    }
+    /* En móvil el collage va primero */
+    .collage { order: -1; }
+    .posts-col { display: none; }
+  }
+
+  /* ══ COLLAGE ══ */
+  .collage {
+    position: relative;
+    height: calc(100vh - 56px);
+    min-height: 400px;
+  }
+
+  @media (max-width: 1024px) and (min-width: 600px) {
+    .collage { height: 60vw; min-height: 300px; max-height: 500px; }
+  }
+
+  @media (max-width: 599px) {
+    .collage { height: 80vw; min-height: 280px; max-height: 400px; }
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+  .slide.active { opacity: 1; }
+
+  .slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    display: block;
+    mix-blend-mode: multiply;
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 90%;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(26,23,20,0.15);
+    border: none; cursor: pointer; padding: 0;
+    transition: background 0.3s, transform 0.3s;
+    flex-shrink: 0;
+  }
+  .dot.active { background: #C8432A; transform: scale(1.4); }
+
+  /* ══ TEXTO ══ */
+  .title-col { z-index: 2; }
+
   h1 {
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 900;
@@ -144,91 +272,42 @@ const posts = [
     display: flex;
     flex-direction: column;
   }
-  .t1 { font-size: clamp(1.75rem, 4vw, 2.75rem); white-space: nowrap; display: block; }
-  .t2 { font-size: clamp(1.25rem, 3vw, 2rem); font-style: italic; font-weight: 400; color: #6B6560; white-space: nowrap; display: block; }
-  .t3 { font-size: clamp(1.5rem, 4.5vw, 2.9rem); white-space: nowrap; letter-spacing: -0.03em; display: block; }
+  .t1 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); white-space: nowrap; display: block; }
+  .t2 { font-size: clamp(1.1rem, 2.5vw, 1.75rem); font-style: italic; font-weight: 400; color: #6B6560; display: block; }
+  .t3 { font-size: clamp(1.25rem, 4vw, 2.75rem); white-space: nowrap; letter-spacing: -0.03em; display: block; }
+
+  @media (max-width: 599px) {
+    .t1 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
+    .t2 { font-size: clamp(1.25rem, 6vw, 1.75rem); }
+    .t3 { font-size: clamp(1.5rem, 9vw, 2.75rem); white-space: normal; }
+  }
+
   .sub { font-size: 0.875rem; color: #6B6560; margin-top: 0.875rem; }
-  .cta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
-  .btn-red { display: inline-block; padding: 0.65rem 1.35rem; background: #C8432A; color: white !important; font-size: 0.8125rem; font-weight: 500; border-radius: 2px; }
-  .btn-ghost { display: inline-block; padding: 0.65rem 1.35rem; border: 1px solid rgba(26,23,20,0.2); color: #1A1714 !important; font-size: 0.8125rem; border-radius: 2px; }
 
-  /* ══ HERO MÓVIL ══ */
-  .hero-desk { display: none; }
+  .cta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; align-items: center; }
 
-  .hero-mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 2rem;
+  .btn-red {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 44px; padding: 0 1.25rem;
+    background: #C8432A; color: white !important;
+    font-size: 0.875rem; font-weight: 500; border-radius: 2px;
+    white-space: nowrap; transition: background 0.15s;
   }
+  .btn-red:hover { background: #a8341f; }
 
-  .mob-avatar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    max-height: 420px;
+  .btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 44px; padding: 0 1.25rem;
+    border: 1px solid rgba(26,23,20,0.2); color: #1A1714 !important;
+    font-size: 0.875rem; border-radius: 2px;
+    white-space: nowrap; transition: border-color 0.15s;
   }
+  .btn-ghost:hover { border-color: #1A1714; }
 
-  .mob-avatar img {
-    height: 420px;
-    width: auto;
-    object-fit: contain;
-    object-position: top center;
-  }
-
-  .mob-content {
-    width: 100%;
-    padding-top: 1rem;
-  }
-
-  /* ══ HERO ESCRITORIO ══ */
-  @media (min-width: 768px) {
-    .hero-mobile { display: none; }
-    .hero-desk {
-      display: block;
-      position: relative;
-      height: calc(100vh - 56px);
-      overflow: visible;
-    }
-
-    .avatar {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: calc(100% + 56px);
-      width: auto;
-      object-fit: contain;
-      object-position: bottom center;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .title-block {
-      position: absolute;
-      left: 0;
-      bottom: 28%;
-      z-index: 2;
-      max-width: 40%;
-    }
-
-    .posts-col {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-      width: 220px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-  }
-
-  /* Posts */
-  .posts-label { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.12em; color: #B8B3AC; margin-bottom: 0.25rem; }
-  .post-card { display: flex; flex-direction: column; gap: 3px; padding: 0.75rem; border: 1px solid rgba(26,23,20,0.08); border-radius: 2px; background: rgba(245,242,236,0.9); }
+  /* ══ POSTS ══ */
+  .posts-col { z-index: 2; display: flex; flex-direction: column; gap: 0.5rem; }
+  .posts-label { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B8B3AC; margin-bottom: 0.25rem; }
+  .post-card { display: flex; flex-direction: column; gap: 3px; padding: 0.75rem; border: 1px solid rgba(26,23,20,0.08); border-radius: 2px; background: rgba(245,242,236,0.92); backdrop-filter: blur(4px); }
   .post-cat { font-size: 0.5625rem; letter-spacing: 0.06em; color: #C8432A; font-weight: 500; }
   .post-title { font-size: 0.75rem; color: #1A1714; line-height: 1.4; }
   .post-date { font-size: 0.5625rem; color: #B8B3AC; }
@@ -236,9 +315,18 @@ const posts = [
 
   /* ══ CATEGORÍAS ══ */
   .cats { padding: 2.5rem 0 0; border-top: 1px solid rgba(26,23,20,0.08); }
-  .cats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; border: 1px solid rgba(26,23,20,0.1); border-radius: 4px; overflow: hidden; background: rgba(26,23,20,0.08); }
-  @media (min-width: 600px) { .cats-grid { grid-template-columns: repeat(3, 1fr); } }
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    border: 1px solid rgba(26,23,20,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgba(26,23,20,0.08);
+  }
+  @media (max-width: 599px) { .cats-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1024px) { .cats-grid { grid-template-columns: repeat(6, 1fr); } }
+
   .cat-card { display: flex; flex-direction: column; gap: 0.35rem; padding: 1.25rem 1rem; background: #F5F2EC; transition: background 0.15s; }
   .cat-card:hover { background: white; }
   .cat-icon { font-size: 1.25rem; }
@@ -252,7 +340,7 @@ const posts = [
   .about-tag { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.12em; color: #B8B3AC; margin-bottom: 0.75rem; }
   .about-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; font-style: italic; line-height: 1.2; margin-bottom: 0.75rem; color: #1A1714; }
   .about-text p { font-size: 0.9375rem; color: #6B6560; line-height: 1.7; max-width: 540px; }
-  .about-stats { display: flex; gap: 2rem; }
+  .about-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
   @media (min-width: 700px) { .about-stats { flex-direction: column; gap: 1.5rem; align-items: flex-end; } }
   .stat { display: flex; flex-direction: column; gap: 2px; }
   @media (min-width: 700px) { .stat { align-items: flex-end; } }
@@ -264,7 +352,20 @@ const posts = [
   .newsletter-tag { font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.12em; color: #B8B3AC; margin-bottom: 0.75rem; }
   .newsletter h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; font-style: italic; color: #1A1714; margin-bottom: 0.75rem; }
   .newsletter-sub { font-size: 0.9375rem; color: #6B6560; max-width: 480px; margin: 0 auto 2rem; line-height: 1.7; }
-  .newsletter-form { display: flex; max-width: 420px; margin: 0 auto; border: 1px solid rgba(26,23,20,0.15); border-radius: 2px; overflow: hidden; background: white; }
+  .newsletter-form {
+    display: flex;
+    max-width: 420px;
+    margin: 0 auto;
+    border: 1px solid rgba(26,23,20,0.15);
+    border-radius: 2px;
+    overflow: hidden;
+    background: white;
+  }
+  @media (max-width: 480px) {
+    .newsletter-form { flex-direction: column; border-radius: 4px; }
+    .newsletter-form input { border-bottom: 1px solid rgba(26,23,20,0.1); }
+    .newsletter-form button { border-radius: 0; }
+  }
   .newsletter-form input { flex: 1; padding: 0.75rem 1rem; font-size: 0.875rem; border: none; outline: none; background: transparent; color: #1A1714; min-width: 0; }
   .newsletter-form button { padding: 0.75rem 1.25rem; background: #1A1714; color: #F5F2EC; font-size: 0.8125rem; font-weight: 500; border: none; cursor: pointer; white-space: nowrap; }
   .newsletter-note { font-size: 0.6875rem; color: #B8B3AC; margin-top: 0.75rem; }

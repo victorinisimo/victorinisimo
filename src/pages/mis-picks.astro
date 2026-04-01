@@ -1,0 +1,357 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const categorias = [
+  {
+    icon: "🧴",
+    nombre: "Skincare & bienestar",
+    desc: "Lo que uso en mi rutina coreana y todo lo que me ayuda a cuidarme.",
+    proximamente: true,
+  },
+  {
+    icon: "💻",
+    nombre: "Tecnología & gadgets",
+    desc: "Las herramientas tecnológicas con las que trabajo y creo contenido.",
+    proximamente: true,
+  },
+  {
+    icon: "🧠",
+    nombre: "Productividad & apps",
+    desc: "Apps, métodos y herramientas que funcionan para cerebros neurodivergentes.",
+    proximamente: true,
+  },
+  {
+    icon: "📚",
+    nombre: "Libros",
+    desc: "Lo que estoy leyendo y lo que ha cambiado cómo pienso.",
+    proximamente: true,
+  },
+  {
+    icon: "🍃",
+    nombre: "Fermentados & microbiota",
+    desc: "Productos, utensilios y recursos para fermentar y cuidar el intestino.",
+    proximamente: true,
+  },
+  {
+    icon: "🎮",
+    nombre: "Ocio & gaming",
+    desc: "Lo que juego, lo que me desconecta y lo que me recarga.",
+    proximamente: true,
+  },
+];
+---
+
+<Layout title="Mis picks">
+
+  <!-- HERO -->
+  <section class="mp-hero">
+    <p class="mp-eyebrow">Victorinisimo · Mis picks</p>
+    <h1>Solo recomiendo<br/><em>lo que uso de verdad.</em></h1>
+    <p class="mp-lead">
+      Nada de recomendaciones vacías. Nada de publicidad disfrazada de consejo. 
+      Si está aquí es porque lo uso, me gusta y pagaría por ello otra vez.
+    </p>
+    <div class="mp-aviso">
+      <span>🌱</span>
+      <p>Esta página está creciendo. Acabo de empezar y todavía no tengo colaboraciones ni productos listados — pero los irá habiendo. Cuando los haya, los encontrarás aquí con total transparencia sobre si son patrocinados o no.</p>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="mp-section">
+    <p class="mp-eyebrow mp-eyebrow--accent">Categorías</p>
+    <h2>Qué encontrarás aquí</h2>
+    <div class="mp-grid">
+      {categorias.map(cat => (
+        <div class="mp-card">
+          <span class="mp-card-icon">{cat.icon}</span>
+          <h3>{cat.nombre}</h3>
+          <p>{cat.desc}</p>
+          {cat.proximamente && <span class="mp-badge">Próximamente</span>}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- TRANSPARENCIA -->
+  <section class="mp-transparencia">
+    <div class="mp-transparencia-inner">
+      <p class="mp-eyebrow mp-eyebrow--accent">Mi política</p>
+      <h2>Transparencia total.<br/><em>Siempre.</em></h2>
+      <div class="mp-reglas">
+        <div class="mp-regla">
+          <span>✅</span>
+          <div>
+            <h3>Solo lo que uso</h3>
+            <p>No recomiendo nada que no haya probado personalmente. Si está aquí, ha pasado por mis manos.</p>
+          </div>
+        </div>
+        <div class="mp-regla">
+          <span>🏷️</span>
+          <div>
+            <h3>Siempre etiquetado</h3>
+            <p>Todo lo que sea patrocinado o tenga código de afiliado estará claramente marcado. Sin letra pequeña.</p>
+          </div>
+        </div>
+        <div class="mp-regla">
+          <span>🚫</span>
+          <div>
+            <h3>Sin presión</h3>
+            <p>Nunca te voy a presionar para que compres nada. Si lo compras, genial. Si no, también.</p>
+          </div>
+        </div>
+        <div class="mp-regla">
+          <span>🧡</span>
+          <div>
+            <h3>Mi opinión honesta</h3>
+            <p>Si algo me gusta, lo digo. Si algo me decepciona, también. Aunque haya un acuerdo de por medio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ¿ERES UNA MARCA? -->
+  <section class="mp-marcas">
+    <div class="mp-marcas-inner">
+      <span class="mp-marcas-icon">🤝</span>
+      <div>
+        <h2>¿Eres una marca<br/>y quieres colaborar?</h2>
+        <p>
+          Si tienes un producto o servicio que crees que encaja con mi comunidad 
+          y con mis valores — hablemos. Solo colaboro con marcas en las que 
+          realmente creo y que aporten algo real a las personas que me siguen.
+        </p>
+        <a href="mailto:hola@victorinisimo.com?subject=Colaboración con Victorinisimo" class="mp-btn">
+          Escribirme →
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  :root {
+    --mp-ink: #1A1714;
+    --mp-muted: #6B6560;
+    --mp-faint: #B8B3AC;
+    --mp-cream: #F5F2EC;
+    --mp-border: rgba(26,23,20,0.08);
+    --mp-accent: #C8432A;
+  }
+
+  .mp-eyebrow {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--mp-faint);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .mp-eyebrow--accent { color: var(--mp-accent); }
+
+  /* ══ HERO ══ */
+  .mp-hero {
+    padding: 4rem 0 3.5rem;
+    border-bottom: 1px solid var(--mp-border);
+    max-width: 720px;
+  }
+
+  .mp-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--mp-ink);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .mp-hero h1 em { font-style: italic; font-weight: 400; color: var(--mp-accent); }
+
+  .mp-lead {
+    font-size: 1.0625rem;
+    color: var(--mp-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 580px;
+  }
+
+  .mp-aviso {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem 1.5rem;
+    background: rgba(200,67,42,0.04);
+    border: 1px solid rgba(200,67,42,0.15);
+    border-radius: 8px;
+  }
+  .mp-aviso span { font-size: 1.5rem; flex-shrink: 0; }
+  .mp-aviso p { font-size: 0.9375rem; color: var(--mp-muted); line-height: 1.65; margin: 0; }
+
+  /* ══ SECCIÓN ══ */
+  .mp-section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--mp-border);
+  }
+
+  .mp-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: var(--mp-ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+
+  /* ══ GRID CATEGORÍAS ══ */
+  .mp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  @media (max-width: 1024px) { .mp-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 599px) { .mp-grid { grid-template-columns: 1fr; } }
+
+  .mp-card {
+    padding: 1.75rem;
+    border: 1px solid var(--mp-border);
+    border-radius: 8px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: box-shadow 0.2s;
+    position: relative;
+  }
+  .mp-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+
+  .mp-card-icon { font-size: 1.75rem; }
+
+  .mp-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--mp-ink);
+  }
+
+  .mp-card p {
+    font-size: 0.875rem;
+    color: var(--mp-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .mp-badge {
+    display: inline-block;
+    font-size: 0.5625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mp-faint);
+    border: 1px solid var(--mp-border);
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    align-self: flex-start;
+  }
+
+  /* ══ TRANSPARENCIA ══ */
+  .mp-transparencia {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--mp-border);
+  }
+  .mp-transparencia-inner { max-width: 720px; }
+
+  .mp-transparencia h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 900;
+    color: var(--mp-ink);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+  .mp-transparencia h2 em { font-style: italic; font-weight: 400; color: var(--mp-accent); }
+
+  .mp-reglas {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .mp-regla {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--mp-border);
+    border-radius: 8px;
+    background: var(--mp-cream);
+  }
+
+  .mp-regla span { font-size: 1.5rem; flex-shrink: 0; }
+
+  .mp-regla h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--mp-ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .mp-regla p {
+    font-size: 0.875rem;
+    color: var(--mp-muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ══ MARCAS ══ */
+  .mp-marcas {
+    padding: 4rem 0;
+  }
+
+  .mp-marcas-inner {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 2.5rem;
+    background: var(--mp-ink);
+    border-radius: 12px;
+  }
+  @media (max-width: 599px) { .mp-marcas-inner { flex-direction: column; } }
+
+  .mp-marcas-icon { font-size: 2.5rem; flex-shrink: 0; }
+
+  .mp-marcas-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .mp-marcas-inner p {
+    font-size: 0.9375rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    max-width: 560px;
+  }
+
+  .mp-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 1.5rem;
+    background: var(--mp-accent);
+    color: white !important;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .mp-btn:hover { background: #a8341f; }
+</style>

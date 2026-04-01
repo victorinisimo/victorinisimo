@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Aviso legal">
+  <div class="legal">
+    <p class="legal-tag">Legal</p>
+    <h1>Aviso legal</h1>
+    <div class="legal-block">
+      <h2>Titular</h2>
+      <p>Victorino · Victorinisimo<br/>Email: hola@victorinisimo.com<br/>Web: victorinisimo.com</p>
+    </div>
+    <div class="legal-block">
+      <h2>Objeto</h2>
+      <p>Este sitio web es de carácter personal y tiene como finalidad compartir contenido sobre escritura, neurodiversidad, bienestar y creación de contenido. No recoge datos personales sin consentimiento explícito del usuario.</p>
+    </div>
+    <div class="legal-block">
+      <h2>Propiedad intelectual</h2>
+      <p>Todos los contenidos de este sitio web — textos, imágenes, diseño y código — son propiedad de Victorinisimo salvo que se indique lo contrario. Queda prohibida su reproducción total o parcial sin autorización expresa.</p>
+    </div>
+    <div class="legal-block">
+      <h2>Contacto</h2>
+      <p>Para cualquier consulta legal puedes escribir a <a href="mailto:hola@victorinisimo.com">hola@victorinisimo.com</a>. Respondo personalmente.</p>
+    </div>
+  </div>
+</Layout>
+<style>
+  .legal { max-width: 640px; padding: 4rem 0; }
+  .legal-tag { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.12em; color: #B8B3AC; margin-bottom: 0.75rem; }
+  .legal h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: #1A1714; margin-bottom: 2.5rem; letter-spacing: -0.02em; }
+  .legal-block { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(26,23,20,0.08); }
+  .legal-block:last-child { border-bottom: none; }
+  .legal h2 { font-family: 'Playfair Display', serif; font-size: 1.125rem; font-weight: 700; color: #1A1714; margin-bottom: 0.75rem; }
+  .legal p { font-size: 0.9375rem; color: #6B6560; line-height: 1.75; }
+  .legal a { color: #C8432A; }
+  .legal a:hover { text-decoration: underline; }
+</style>

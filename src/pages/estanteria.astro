@@ -1,45 +1,270 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const libros = [
-  {
-    titulo: "En proceso",
-    subtitulo: "Mi primer libro",
-    desc: "Estoy escribiendo mi primer libro. Aquí iré compartiendo el proceso, los avances y lo que voy aprendiendo sobre escribir siendo AuDHD.",
-    estado: "En proceso",
-    href: "#"
-  },
-];
 ---
 
 <Layout title="La estantería">
 
-  <section style="padding:3rem 0 2rem;">
-    <p style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.12em;color:#B8B3AC;margin-bottom:1rem;display:block;">La estantería</p>
-    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1;letter-spacing:-0.02em;color:#1A1714;margin-bottom:0.75rem;">Libros y<br/><em style="font-style:italic;font-weight:400;">proyectos largos.</em></h1>
-    <p style="font-size:1rem;color:#6B6560;line-height:1.7;max-width:540px;">Lo que escribo cuando 280 caracteres o un post no son suficientes. Proyectos de largo aliento, con calma y sin prisa.</p>
-  </section>
-
-  <section style="padding:2rem 0 4rem;border-top:1px solid rgba(26,23,20,0.08);">
-    {libros.map(libro => (
-      <div style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;padding:2rem;border:1px solid rgba(26,23,20,0.08);border-radius:4px;background:white;margin-bottom:1rem;">
-        <div>
-          <span style="font-size:0.5625rem;text-transform:uppercase;letter-spacing:0.1em;color:#C8432A;font-weight:500;display:block;margin-bottom:0.5rem;">{libro.estado}</span>
-          <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#1A1714;margin-bottom:0.25rem;">{libro.titulo}</h2>
-          <p style="font-size:0.875rem;color:#B8B3AC;margin-bottom:1rem;font-style:italic;">{libro.subtitulo}</p>
-          <p style="font-size:0.9375rem;color:#6B6560;line-height:1.7;max-width:480px;">{libro.desc}</p>
-        </div>
-        <div style="width:100px;height:140px;background:rgba(26,23,20,0.04);border:1px solid rgba(26,23,20,0.08);border-radius:2px;display:flex;align-items:center;justify-content:center;">
-          <span style="font-size:2rem;">📖</span>
+  <!-- LIBRO EN PROCESO -->
+  <section class="libro">
+    <div class="libro-inner">
+      <div class="libro-texto">
+        <p class="est-tag">La estantería · En proceso</p>
+        <h1>Estoy escribiendo<br/><em>un libro.</em></h1>
+        <p class="libro-lead">
+          Todavía no tiene título. Todavía no tiene fecha. 
+          Pero lleva dentro todo lo que no encontré cuando más lo necesitaba — 
+          mi historia, lo que aprendí al descubrir que soy AuDHD de adulto, 
+          y lo que significa reconstruirse desde ahí.
+        </p>
+        <p class="libro-body">
+          Es una mezcla de todo: experiencia personal, neurodiversidad, 
+          salud mental, identidad y lo que nadie te cuenta sobre vivir 
+          con un cerebro que funciona diferente. Sin filtros. Sin perfección. 
+          Exactamente como somos.
+        </p>
+        <div class="libro-badges">
+          <span class="badge">📖 En escritura</span>
+          <span class="badge">🧠 AuDHD · Neurodiversidad</span>
+          <span class="badge">✍️ No ficción personal</span>
         </div>
       </div>
-    ))}
-
-    <div style="text-align:center;padding:3rem 0 2rem;">
-      <p style="font-family:'Playfair Display',serif;font-size:1.25rem;font-style:italic;color:#B8B3AC;margin-bottom:0.75rem;">Más proyectos en camino.</p>
-      <p style="font-size:0.875rem;color:#B8B3AC;margin-bottom:1.5rem;">Suscríbete para seguir el proceso desde dentro.</p>
-      <a href="/newsletter" style="display:inline-block;padding:0.65rem 1.35rem;background:#C8432A;color:white;font-size:0.8125rem;font-weight:500;border-radius:2px;">Suscribirme gratis</a>
+      <div class="libro-cta-box">
+        <p class="cta-box-label">Lista de espera</p>
+        <h2>Sé de los primeros<br/>en tenerlo.</h2>
+        <p class="cta-box-desc">Apúntate ahora y cuando salga serás de los primeros en saberlo — con acceso anticipado, posibilidad de ser lector beta y precio especial de preventa.</p>
+        <ul class="cta-box-lista">
+          <li>📬 Email cuando esté listo</li>
+          <li>🔖 Acceso anticipado y preventa</li>
+          <li>📝 Posibilidad de ser lector/a beta</li>
+        </ul>
+        <a 
+          href="mailto:hola@victorinisimo.com?subject=Quiero estar en la lista de espera del libro&body=Hola Victorino, quiero apuntarme a la lista de espera de tu libro. ¡Mucho ánimo con la escritura!" 
+          class="cta-box-btn"
+        >
+          Apuntarme a la lista →
+        </a>
+        <p class="cta-box-nota">Sin spam. Solo te escribo cuando haya novedades reales.</p>
+      </div>
     </div>
   </section>
 
+  <!-- SEPARADOR -->
+  <div class="separador">
+    <span>—</span>
+  </div>
+
+  <!-- LO QUE LEO -->
+  <section class="lecturas">
+    <p class="est-tag">La estantería · Lo que leo</p>
+    <h2>Lo que leo y lo que<br/><em>ha cambiado cómo pienso.</em></h2>
+    <p class="lecturas-body">
+      Libros, artículos y referencias que me han marcado — 
+      organizados, comentados y con mi opinión honesta. 
+      Estoy preparando esta sección. Vuelve pronto.
+    </p>
+    <a href="/jardin" class="lecturas-btn">Mientras tanto, lee el jardín →</a>
+  </section>
+
 </Layout>
+
+<style>
+  :root {
+    --est-ink: #1A1714;
+    --est-muted: #6B6560;
+    --est-faint: #B8B3AC;
+    --est-cream: #F5F2EC;
+    --est-border: rgba(26,23,20,0.08);
+    --est-accent: #C8432A;
+  }
+
+  .est-tag {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--est-faint);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ══ LIBRO ══ */
+  .libro {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--est-border);
+  }
+
+  .libro-inner {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .libro-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  .libro h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--est-ink);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .libro h1 em { font-style: italic; font-weight: 400; color: var(--est-accent); }
+
+  .libro-lead {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--est-ink);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .libro-body {
+    font-size: 1rem;
+    color: var(--est-muted);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .libro-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    color: var(--est-muted);
+    background: white;
+    border: 1px solid var(--est-border);
+    padding: 0.3rem 0.75rem;
+    border-radius: 2px;
+  }
+
+  /* ══ CTA BOX ══ */
+  .libro-cta-box {
+    background: var(--est-ink);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: sticky;
+    top: 80px;
+  }
+
+  .cta-box-label {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--est-accent);
+    display: block;
+  }
+
+  .libro-cta-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .cta-box-desc {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+  }
+
+  .cta-box-lista {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 0.875rem 0;
+  }
+
+  .cta-box-lista li {
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+
+  .cta-box-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 1.5rem;
+    background: var(--est-accent);
+    color: white !important;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: background 0.15s;
+    text-align: center;
+    margin-top: 0.25rem;
+  }
+  .cta-box-btn:hover { background: #a8341f; }
+
+  .cta-box-nota {
+    font-size: 0.6875rem;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* ══ SEPARADOR ══ */
+  .separador {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--est-faint);
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+  }
+
+  /* ══ LO QUE LEO ══ */
+  .lecturas {
+    padding: 2rem 0 4rem;
+    max-width: 640px;
+  }
+
+  .lecturas h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 900;
+    color: var(--est-ink);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .lecturas h2 em { font-style: italic; font-weight: 400; color: var(--est-accent); }
+
+  .lecturas-body {
+    font-size: 1rem;
+    color: var(--est-muted);
+    line-height: 1.75;
+    margin-bottom: 1.75rem;
+  }
+
+  .lecturas-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 1.5rem;
+    background: var(--est-ink);
+    color: white !important;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .lecturas-btn:hover { background: var(--est-accent); }
+</style>
