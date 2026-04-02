@@ -22,3 +22,5 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+public/videos/avatar-animated.gif
+public/videos/avatar-cream.mp4
